@@ -16,7 +16,7 @@ class CustomAlertDialog extends StatelessWidget {
     this.title,
     required this.message,
     this.circularBorderRadius = 10.0,
-    this.bgColor = ThemeConstant.primaryBackground,
+    this.bgColor = ThemeConstant.primaryBackgroundDark,
     this.positiveBtnText,
     this.negativeBtnText,
     this.onPositivePressed,

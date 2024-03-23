@@ -68,7 +68,8 @@ class StartupScreenState extends State<StartupScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         GestureDetector(
-                          onTap: (){
+                          onTap: () async{
+                            await SharedPreferenceController.shared.setUserType(1);
                             RoutesPage.of()
                                 .goTo(mode: RouteMode.push, moveTo: RouteName.countryScreenPage);
                           },
@@ -81,7 +82,8 @@ class StartupScreenState extends State<StartupScreen> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () async{
+                            await SharedPreferenceController.shared.setUserType(2);
                             RoutesPage.of()
                                 .goTo(mode: RouteMode.push, moveTo: RouteName.countryScreenPage);
                           },

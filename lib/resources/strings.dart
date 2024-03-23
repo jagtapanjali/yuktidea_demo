@@ -5,12 +5,23 @@ class StringHelper {
   static const String termCondition = "Terms and Conditions";
   static const String student = "Student";
   static const String agent = "Agent";
-  static const String selectCountry = "Select your country";
+  static const String selectYourCountry = "Select your country";
   static const String enterPhoneNumber = "Enter phone number";
   static const String mobileInfo = "Please enter your 10 digit mobile number to receive OTP";
+  static const String getOtp = "Get OTP";
+  static const String vrfyNmbr = "Verify Number";
+  static const String otpInfo = "Please enter the OTP received to verify your number";
+  static const String vrfyOTP = "Verify";
+  static const String didntRecvOTP = "Didn’t receive OTP?";
+  static const String resendOTP = "Resend OTP";
+  static const String waitResendOTP = "Resending OTP in";
+  static const String proceed = "Proceed";
+  static const String selectCountry = "Select Country";
+  static const String countryInfo = "Please select the country where you want to study";
 
 
   //.........error messages.............
+  static const errorOTP = "OTP does not match, please try again";
   static const noInternetConnection = "Please check your Internet connection";
   static const allowLocationPermission = "Please Allow Location";
   static const somethingWentWrong = "Something went wrong";

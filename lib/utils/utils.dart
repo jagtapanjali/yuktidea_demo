@@ -53,7 +53,7 @@ class Utility {
   }
 
   static showSnackBar(String message,
-      {Color color = ThemeConstant.textDetail, int? durationInSecond}) {
+      {Color color = ThemeConstant.backgroundDark, int? durationInSecond}) {
     final snackBar = GetSnackBar(
       message: message,
       duration: Duration(seconds: durationInSecond ?? 3),

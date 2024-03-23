@@ -78,7 +78,7 @@ class CountryScreenState extends State<CountryScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                StringHelper.selectCountry,
+                StringHelper.selectYourCountry,
                 style: AppTextStyle.textSubHeadlineRegular(
                     context, AppColorStyle.text(context)),
               ),

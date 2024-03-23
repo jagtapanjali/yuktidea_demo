@@ -22,6 +22,10 @@ class APIConstant {
   // API End URL
   static String termsCondition = "${baseUrl}terms-conditions";
   static String getCountries = "${baseUrl}countries";
+  static String studentLogin = "${baseUrl}student/login";
+  static String counsellorLogin = "${baseUrl}counsellor/login";
+  static String verifyOtp = "${baseUrl}verify-otp";
+  static String getCountry = "${baseUrl}select/country";
 
   // Header method
   static getHeader(List<ApiHeader> headers) async {
@@ -59,6 +63,12 @@ class RequestKeys {
   String get deviceType => "device_type";
 
   String get authorization => "Authorization";
+
+  String get telCode => "tel_code";
+
+  String get phone => "phone";
+
+  String get code => "code";
 }
 
 class ResponseKeys {

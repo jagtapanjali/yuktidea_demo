@@ -7,6 +7,7 @@ import 'package:yuktidea_demo/app_style/theme/app_color_style.dart';
 import 'package:yuktidea_demo/constants/constants.dart';
 import 'package:yuktidea_demo/data_provider/shared_preference/shared_preference_controller.dart';
 import 'package:yuktidea_demo/features/getCountry/country_screen_form_ui_model.dart';
+import 'package:yuktidea_demo/features/getPhoneNumber/phone_number_screen_controller.dart';
 import 'package:yuktidea_demo/navigation/app_routes.dart';
 import 'package:yuktidea_demo/resources/icons.dart';
 import 'package:yuktidea_demo/resources/strings.dart';
@@ -24,7 +25,7 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
   var countryModel = CountryScreenModel().obs;
   final _formKey = GlobalKey<FormState>();
   final _phoneController = TextEditingController();
-  final FocusNode focusNode = FocusNode();
+  int userType = 0;
 
 
   @override
@@ -35,6 +36,7 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
 
   initSetup() async {
     countryModel.value = CountryScreenModel.fromJson(await SharedPreferenceController.shared.getCountry());
+    userType = await SharedPreferenceController.shared.getUserType();
   }
 
   @override
@@ -113,6 +115,7 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
             key: _formKey,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SvgPicture.network(
                   countryModel.value.flag ?? "",
@@ -122,17 +125,31 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
                 const SizedBox(width: 10,),
                 Text(countryModel.value.telCode ?? '',style: AppTextStyle.textDetailsLight(
                     context, AppColorStyle.text(context))),
-                const SizedBox(width: 10,),
+                const SizedBox(width: 20,),
                 SizedBox(
-                  width: 180,
+                  width: 125,
                   child: TextFormField(
+                    controller: _phoneController,
+                    keyboardType: TextInputType.number,
+                    maxLength: 10,
                     cursorColor: AppColorStyle.primary(context),
                     style: AppTextStyle.textDetailsRegular(context, AppColorStyle.text(context)),
                     decoration: InputDecoration(
-                      border: UnderlineInputBorder(),
+                      contentPadding: EdgeInsets.zero,
+                      border: const UnderlineInputBorder(),
                       hintText: "XXXXXXXXXX",
                       hintStyle: AppTextStyle.textDetailsRegular(context, AppColorStyle.shimmerSecondary(context))
                     ),
+                    onChanged: (value){
+                      if(mounted){
+                        setState(() {
+
+                        });
+                      }
+                    },
+                    validator: (value) {
+                      return Validators().validateMobile(value);
+                    },
                   ),
                 ),
                 // Container(
@@ -177,6 +194,24 @@ class PhoneNumberScreenState extends State<PhoneNumberScreen> {
               ],
             ),
           )
+        ),
+        const SizedBox(
+          height: 170,
+        ),
+        WidgetHelper.halfButtonWidget(
+            context: context,
+        callBacked: () async {
+            if(await PhoneNumberScreenController.shared.login(_phoneController.text,countryModel.value.telCode ?? "0",userType)){
+              // RoutesPage.of()
+              //     .goTo(mode: RouteMode.push, moveTo: RouteName.otpScreenPage);
+              RoutesPage.of()
+                  .goTo(mode: RouteMode.push, moveTo: RouteName.selectCountryScreenPage);
+            }
+        },
+        buttonText: StringHelper.getOtp,
+        isPressed: _phoneController.text.length == 10 ? true : false),
+        const SizedBox(
+          height: 50,
         ),
       ],
     );

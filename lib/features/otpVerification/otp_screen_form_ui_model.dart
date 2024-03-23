@@ -1,36 +1,33 @@
-class OTPScreenModel {
-  int? id;
-  String? name;
-  String? code;
-  String? telCode;
-  dynamic timezone;
-  String? flag;
-  String? createdAt;
-  String? updatedAt;
+class OtpScreenModel {
+  String? profileStatus;
+  String? role;
+  String? phone;
+  String? phoneVerifiedAt;
+  String? accessToken;
+  String? tokenType;
+  int? expiresIn;
 
-  OTPScreenModel({this.id, this.name, this.code, this.telCode, this.timezone, this.flag, this.createdAt, this.updatedAt});
+  OtpScreenModel({this.profileStatus, this.role, this.phone, this.phoneVerifiedAt, this.accessToken, this.tokenType, this.expiresIn});
 
-  OTPScreenModel.fromJson(Map<String, dynamic> json) {
-    id = (json["id"] as num).toInt();
-    name = json["name"];
-    code = json["code"];
-    telCode = json["tel_code"];
-    timezone = json["timezone"];
-    flag = json["flag"];
-    createdAt = json["created_at"];
-    updatedAt = json["updated_at"];
+  OtpScreenModel.fromJson(Map<String, dynamic> json) {
+    profileStatus = json["profile_status"];
+    role = json["role"];
+    phone = json["phone"];
+    phoneVerifiedAt = json["phone_verified_at"];
+    accessToken = json["access_token"];
+    tokenType = json["token_type"];
+    expiresIn = (json["expires_in"] as num).toInt();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data["id"] = id;
-    data["name"] = name;
-    data["code"] = code;
-    data["tel_code"] = telCode;
-    data["timezone"] = timezone;
-    data["flag"] = flag;
-    data["created_at"] = createdAt;
-    data["updated_at"] = updatedAt;
+    data["profile_status"] = profileStatus;
+    data["role"] = role;
+    data["phone"] = phone;
+    data["phone_verified_at"] = phoneVerifiedAt;
+    data["access_token"] = accessToken;
+    data["token_type"] = tokenType;
+    data["expires_in"] = expiresIn;
     return data;
   }
 }

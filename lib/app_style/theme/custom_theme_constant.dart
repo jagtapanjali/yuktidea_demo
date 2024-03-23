@@ -28,8 +28,8 @@ class ThemeConstant {
   static const textGreenVariant = Color(0xFFE6F7E8);
 
   static const transparent = Color(0x00000000);
-  static const success = Color(0x0053A57F);
-  static const error = Color(0x00DF0000);
+  static const success = Color(0xFF11F204);
+  static const error = Color(0xFFDF0000);
 
   static const shimmerPrimary = Color(0xFF464646);
   static const shimmerSecondary = Color(0xcc857e7e);
@@ -59,8 +59,8 @@ class ThemeConstant {
   static const textGreenDark = Color(0xFF14A38B);
 
   static const transparentDark = Color(0x00000000);
-  static const successDark = Color(0x0053A57F);
-  static const errorDark = Color(0x00DF0000);
+  static const successDark = Color(0xFF11F204);
+  static const errorDark = Color(0xFFDF0000);
 
   static const shimmerPrimaryDark = Color(0xFF464646);
   static const shimmerSecondaryDark = Color(0xcc857e7e);

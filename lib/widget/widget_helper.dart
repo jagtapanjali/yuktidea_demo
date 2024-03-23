@@ -45,26 +45,32 @@ class WidgetHelper {
   static Widget halfButtonWidget({
     required BuildContext context,
     required String buttonText,
-    double height = 45,
-    double borderWidth = 1,
-    double borderRadius = 5,
-    double width = 150,
+    bool isPressed = false,
+    double height = 60,
+    double borderWidth = 3,
+    double borderRadius = 30,
+    double width = 220,
     required VoidCallback callBacked,
   }) {
     return getInkWellWidget(
-      onTap: () => {callBacked()},
-      child: Container(
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-          color: AppColorStyle.primary(context),
-          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-        ),
-        child: Center(
-          child: Text(
-            buttonText,
-            style: AppTextStyle.textDetailsMedium(
-                context, AppColorStyle.textWhite(context)),
+      onTap: () => {isPressed ? callBacked() : null },
+      child: Opacity(
+        opacity: isPressed ? 1 : 0.5,
+        child: Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            color: const Color(0XFF212426),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+            border: Border.all(color: Colors.white10),
+            boxShadow: [BoxShadow(color: AppColorStyle.shimmerSecondary(context).withOpacity(0.5),blurRadius: 0.4,spreadRadius: 0.8,offset: const Offset(-2,-1))]
+          ),
+          child: Center(
+            child: Text(
+              buttonText,
+              style: AppTextStyle.textDetailsMedium(
+                  context, AppColorStyle.primary(context)),
+            ),
           ),
         ),
       ),

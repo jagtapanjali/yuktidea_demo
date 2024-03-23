@@ -9,6 +9,8 @@ class SharedPreferenceKeys {
   static const String refreshToken = "refreshToken";
   static const String tokenDate = "tokenDate";
   static const String country = "country";
+  static const String phone = "phone";
+  static const String user = "user";
 
   static const String userId = 'userId';
   static const String userTypeId = 'userTypeId';
@@ -123,6 +125,16 @@ class SharedPreferenceController {
     await prefs.setString(SharedPreferenceKeys.tokenDate, value);
   }
 
+  getUserType() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(SharedPreferenceKeys.user);
+  }
+
+  setUserType(int value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(SharedPreferenceKeys.user, value);
+  }
+
   getCountry() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return json.decode(prefs.getString(SharedPreferenceKeys.country) ?? "");
@@ -131,6 +143,16 @@ class SharedPreferenceController {
   setCountry(CountryScreenModel value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(SharedPreferenceKeys.country, json.encode(value));
+  }
+
+  getPhoneNumber() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(SharedPreferenceKeys.phone);
+  }
+
+  setPhoneNumber(String value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(SharedPreferenceKeys.phone, value);
   }
 
 }

@@ -1,6 +1,8 @@
 import 'package:yuktidea_demo/constants/constants.dart';
 import 'package:yuktidea_demo/features/getCountry/country_screen_page.dart';
+import 'package:yuktidea_demo/features/selectCountry/select_country_screen_page.dart';
 import 'package:yuktidea_demo/features/getPhoneNumber/phone_number_screen_page.dart';
+import 'package:yuktidea_demo/features/otpVerification/otp_screen_page.dart';
 import 'package:yuktidea_demo/features/splash/splash_screen_page.dart';
 import 'package:yuktidea_demo/features/startUp/startup_screen_page.dart';
 import 'package:yuktidea_demo/features/termsCondition/terms_condition_screen_page.dart';
@@ -80,6 +82,8 @@ class RouteName {
   static const String termsConditionScreenPage = "/termsConditionScreenPage";
   static const String countryScreenPage = "/countryScreenPage";
   static const String phoneNumberScreenPage = "/phoneNumberScreenPage";
+  static const String otpScreenPage = "/otpScreenPage";
+  static const String selectCountryScreenPage = "/selectCountryScreenPage";
 
 }
 
@@ -106,6 +110,14 @@ class Routes {
     GetPage(
         name: RouteName.phoneNumberScreenPage,
         page: () => const PhoneNumberScreen(),
+        popGesture: false),
+    GetPage(
+        name: RouteName.otpScreenPage,
+        page: () => const OTPScreen(),
+        popGesture: false),
+    GetPage(
+        name: RouteName.selectCountryScreenPage,
+        page: () => const SelectCountryScreen(),
         popGesture: false),
   ];
 }
